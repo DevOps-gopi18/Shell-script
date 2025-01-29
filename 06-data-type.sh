@@ -9,3 +9,5 @@ NUMBER1=$1
 NUMBER2=$2
 
 SUM=$((NUMBER1+NUMBER2)) #ADDING NUMBERS
+
+echo "SUM of 2 numbers is : $SUM"
