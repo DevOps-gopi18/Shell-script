@@ -11,7 +11,7 @@
 
 NUMBER=$1
 
-if [ NUMBER -gt 100 ]
+if [ $NUMBER -gt 100 ]
 than
     echo "Given number is grater than 100"
 else
