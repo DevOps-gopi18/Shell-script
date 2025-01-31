@@ -9,8 +9,8 @@ W="\e[0m"
 B="\e[44m"
 
 LOG_FOLDER="/var/log/shellscript-log"
-FILE_NAME=$( echo $0 | cut -d "." -f1)
-TIMESTAMP=$( date +%Y-%m-%D-%H-%M-%S)
+FILE_NAME=$( echo $0 | cut -d "." -f1 )
+TIMESTAMP=$( date +%Y-%m-%D-%H-%M-%S )
 LOG_FILE_NAME="$LOG_FOLDER/$FILE_NAME-$TIMESTAMP.log"
 
 VALIDATE(){
