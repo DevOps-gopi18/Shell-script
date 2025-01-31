@@ -6,6 +6,7 @@ R="\e[31m]"
 G="\e[32m"
 Y="\e[33m"
 W="\e[0m"
+B="\e[40m"
 
 VALIDATE(){
     if [ $1 -ne 0 ]
@@ -30,7 +31,7 @@ then
     dnf install git -y
     VALIDATE $? "Installing Git"
 else
-    echo -e "GIT already ... $Y Installed $W"
+    echo -e "$B GIT already ...  Installed $W"
 fi
 
 dnf list installed mysql
