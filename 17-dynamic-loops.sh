@@ -1,38 +1,35 @@
 #!/bin/bash
 
-#Installing the packages dynamically by using for loop
-
 USERID=$(id -u)
-R="\e[31m]"
+R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
-W="\e[0m"
-B="\e[44m"
+N="\e[0m"
 
-LOG_FOLDER="/var/log/shellscript-log"
-FILE_NAME=$( echo $0 | cut -d "." -f1 )
-TIMESTAMP=$( date +%Y-%m-%D-%H-%M-%S )
-LOG_FILE_NAME="$LOG_FOLDER/$FILE_NAME-$TIMESTAMP.log"
+LOGS_FOLDER="/var/log/shellscript-logs"
+LOG_FILE=$(echo $0 | cut -d "." -f1 )
+TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
+LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo -e "$2 installation ...$R FAILED $W"
+        echo -e "$2 ... $R FAILURE $N"
         exit 1
     else
-        echo -e "$2 installtion ...$G SUCCESS! $W"
+        echo -e "$2 ... $G SUCCESS $N"
     fi
 }
 
 CHECK_ROOT(){
     if [ $USERID -ne 0 ]
     then
-        echo "ERROR : You must have root access to execute the program"
-        exit 1
+        echo "ERROR:: You must have sudo access to execute this script"
+        exit 1 #other than 0
     fi
 }
 
-echo "script execution started at :$TIMESTAMP" &>>$LOG_FILE_NAME
+echo "Script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
 
 CHECK_ROOT
 
@@ -41,11 +38,9 @@ do
     dnf list installed $package &>>$LOG_FILE_NAME
     if [ $? -ne 0 ]
     then
-        dnf install $package -y
-        VALIDATE $? "Installing $package" &>>$LOG_FILE_NAME
+        dnf install $package -y &>>$LOG_FILE_NAME
+        VALIDATE $? "Installing $package"
     else
-        echo -e "$B $package already ...  Installed $W"
+        echo -e "$package is already $Y ... INSTALLED $N"
     fi
 done
-
-
