@@ -25,14 +25,14 @@ VALIDATE(){
 }
 
 CHECK_ROOT(){
-if [ $USERID -ne 0 ]
-then
-    echo "ERROR : You must have root access to execute the program"
-    exit 1
-fi
+    if [ $USERID -ne 0 ]
+    then
+        echo "ERROR : You must have root access to execute the program"
+        exit 1
+    fi
 }
 
-echo "script execution started at :$LOG_FILE_NAME" &>>$LOG_FILE_NAME
+echo "script execution started at :$LTIMESTAMP" &>>$LOG_FILE_NAME
 
 CHECK_ROOT
 
