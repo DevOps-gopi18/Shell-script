@@ -32,7 +32,7 @@ CHECK_ROOT(){
     fi
 }
 
-echo "script execution started at :$LTIMESTAMP" &>>$LOG_FILE_NAME
+echo "script execution started at :$TIMESTAMP" &>>$LOG_FILE_NAME
 
 CHECK_ROOT
 
