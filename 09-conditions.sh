@@ -3,7 +3,7 @@
 # -gt -lt -eq -ge -le
 # -gt = greater than
 # -lt = less than
-# -eq = less than or equal
+# -eq = equal
 # -ge = greater than or equal
 # -le = less than or equal
 
