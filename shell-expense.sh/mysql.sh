@@ -14,7 +14,7 @@ TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 
 VALIDATION(){
-    if [ $1 -ne 0]
+    if [ $1 -ne 0 ]
     then
         echo "$2... FAILURE"
         exit 1
@@ -24,7 +24,7 @@ VALIDATION(){
 }
 
 CHECK_ROOT(){
-    if [ $USERID -ne 0]
+    if [ $USERID -ne 0 ]
     then
         echo -e "$R ERROR : You must have root access to execute the program $N"
         exit 1
@@ -46,7 +46,7 @@ VALIDATE $? "Starting MySQL server"
 
 mysql -h 172.31.43.235 -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE_NAME
 
-if [ S? -ne 0]
+if [ S? -ne 0 ]
 then
     echo "MySQL root password not setup" &>>$LOG_FILE_NAME
     mysql_secure_installation --set-root-pass ExpenseApp@1
