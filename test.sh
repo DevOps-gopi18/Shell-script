@@ -56,3 +56,28 @@ then
 else
     echo "MySQL is already installed."
 fi
+
+
+#installing GIT
+USERID=$(id -u)
+
+if [ $USERID -ne 0 ]
+then
+    echo "You must have root access to execute the program..ERROR"
+fi
+
+dnf list installed git
+if [ $? -ne 0 ]
+then
+    dnf install git -y
+    if [ $? -ne 0 ]
+    then
+        echo "GIT installation...FAILURE"
+        exit 1
+    else
+        echo "GIT installation...SUCCESS"
+        exit 1
+    fi
+else
+    echo "GIT is already...INSTALLED"
+fi
