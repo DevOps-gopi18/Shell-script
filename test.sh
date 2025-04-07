@@ -13,10 +13,10 @@ SUM=$((NUMBER1*NUMBER2))
 
 echo "The values are....$SUM"
 
-CINEMA={Devara,Pushpa,RRR}
+CINEMA=(Devara,Pushpa,RRR)
 
-echo "First occurence of the movie is $CINEMA[0]"
-echo "Second occurence of the movie is $CINEMA[1]"
-echo "Third occurence of the movie is $CINEMA[2]"
+echo "First occurence of the movie is ${CINEMA[0]}"
+echo "Second occurence of the movie is ${CINEMA[1]}"
+echo "Third occurence of the movie is ${CINEMA[2]}"
 
-echo "All occureses...$CINEMA[@]"
+echo "All occureses...${CINEMA[@]}"
