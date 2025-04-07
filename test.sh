@@ -22,14 +22,14 @@ echo "print the time... $TIMESTAMP"
 # echo "All occureses...${CINEMA[@]}"
 
 #Given number is greater than(100)?
-NUMBER=$1
+# NUMBER=$1
 
-if [ $NUMBER -gt 100 ]
-then
-    echo "given number is greater than 100"
-else
-    echo "given number is less than 100"
-fi
+# if [ $NUMBER -gt 100 ]
+# then
+#     echo "given number is greater than 100"
+# else
+#     echo "given number is less than 100"
+# fi
 
 
 #Installing MySQL
@@ -44,7 +44,7 @@ dnf list installed mysql
 
 if [ $? -ne 0 ]
 then
-    dnf install mysql
+    dnf install mysql -y
     if [ $? -ne 0 ]
     then
         echo "MySQL installation...FAILURE"
