@@ -30,3 +30,28 @@ then
 else
     echo "given number is less than 100"
 fi
+
+
+#Installing MySQL
+USERID=$(id -u)
+
+if [ $USERID -ne 0 ]
+then
+    echo "You must have root access to install MySQL...ERROR"
+fi
+
+dnf list installed mysql
+
+if [ $? -ne 0 ]
+then
+    dnf install mysql
+    if [ $? -ne 0 ]
+    then
+        echo "MySQL installation...FAILURE"
+        exit 1
+    else
+        echo "MySQL installation...SUCCESS"
+        exit 1
+    fi
+else
+    echo "MySQL is already installed."
