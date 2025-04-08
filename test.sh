@@ -86,6 +86,17 @@ echo "print the time... $TIMESTAMP"
 
 USERID=$(id -u)
 
+VALIDATE(){
+if [ $1 -ne 0 ]
+    then
+        echo "$2 installation...FAILURE"
+        exit 1
+    else
+        echo "$2 installation...SUCCESS"
+        exit 1
+    fi
+}
+
 if [ $USERID -ne 0 ] #checking the root access
 then
     echo "You must have root access to execute the script...ERROR"
@@ -96,14 +107,7 @@ dnf list installed nginx
 if [ $? -ne 0 ]
 then
     dnf install nginx -y #installing Nginx
-    if [ $? -ne 0 ]
-    then
-        echo "Nginx installation...FAILURE"
-        exit 1
-    else
-        echo "Nginx installation...SUCCESS"
-        exit 1
-    fi
+    VALIDATE $? "installing nginx"
 else
     echo "Nginx is already...INSTALLED"
 fi
