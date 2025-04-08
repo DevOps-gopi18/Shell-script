@@ -95,17 +95,17 @@ B="\e[44m]"
 VALIDATE(){
 if [ $1 -ne 0 ]
     then
-        echo "$2 installation...$R FAILURE $W"
+        echo -e "$2 installation...$R FAILURE $W"
         exit 1
     else
-        echo "$2 installation...$G SUCCESS $W"
+        echo -e "$2 installation...$G SUCCESS $W"
         exit 1
     fi
 }
 
 if [ $USERID -ne 0 ] #checking the root access
 then
-    echo "$Y You must have root access to execute the script...$R ERROR $W"
+    echo -e "$Y You must have root access to execute the script...$R ERROR $W"
 fi
 
 #checking if Nginx is already present or not
@@ -115,5 +115,5 @@ then
     dnf install nginx -y #installing Nginx
     VALIDATE $? "installing nginx"
 else
-    echo "$Y Nginx is already...INSTALLED $W"
+    echo -e "$Y Nginx is already...INSTALLED $W"
 fi
