@@ -83,7 +83,7 @@ VALIDATE(){
     fi
 }
 
-echo "script execution started at...$LOG_FILE_NAME" &>>$LOG_FILE_NAME
+echo "script execution started at...$TIMESTAMP" &>>$LOG_FILE_NAME
 
 if [ $USERID -ne 0 ]
 then
