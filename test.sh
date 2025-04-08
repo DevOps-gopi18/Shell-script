@@ -86,11 +86,11 @@ echo "print the time... $TIMESTAMP"
 
 USERID=$(id -u)
 
-R="\e[31m]"
-G="\e[32m]"
-Y="\e[33m]"
-W="\e[0m]"
-B="\e[44m]"
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+W="\e[0m"
+B="\e[44m"
 
 VALIDATE(){
 if [ $1 -ne 0 ]
