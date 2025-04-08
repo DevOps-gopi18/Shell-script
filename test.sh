@@ -90,14 +90,17 @@ then
     echo "You must have root access to execute the program..ERROR"
 fi
 
-dnf list installed mysql &>>$LOG_FILE_NAME
-if [ $? -ne 0 ]
-then
-    dnf install mysql -y &>>$LOG_FILE_NAME
-    VALIDATE $? "installing MySQL"
-else
-    echo -e "$Y MySQL is already...INSTALLED $W"
-fi
+for package in $@
+do
+    dnf list installed $package &>>$LOG_FILE_NAME
+    if [ $? -ne 0 ]
+    then
+        dnf install $package -y &>>$LOG_FILE_NAME
+        VALIDATE $? "installing $package"
+    else
+        echo -e "$Y $package is already...INSTALLED $W"
+    fi
+done
 
 #Install Nginx
 
