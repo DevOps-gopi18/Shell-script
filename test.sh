@@ -33,51 +33,77 @@ echo "print the time... $TIMESTAMP"
 
 
 #Installing MySQL
-USERID=$(id -u)
+# USERID=$(id -u)
 
-if [ $USERID -ne 0 ]
-then
-    echo "You must have root access to install MySQL...ERROR"
-fi
+# if [ $USERID -ne 0 ]
+# then
+#     echo "You must have root access to install MySQL...ERROR"
+# fi
 
-dnf list installed mysql
+# dnf list installed mysql
 
-if [ $? -ne 0 ]
-then
-    dnf install mysql -y
-    if [ $? -ne 0 ]
-    then
-        echo "MySQL installation...FAILURE"
-        exit 1
-    else
-        echo "MySQL installation...SUCCESS"
-        exit 1
-    fi
-else
-    echo "MySQL is already installed."
-fi
+# if [ $? -ne 0 ]
+# then
+#     dnf install mysql -y
+#     if [ $? -ne 0 ]
+#     then
+#         echo "MySQL installation...FAILURE"
+#         exit 1
+#     else
+#         echo "MySQL installation...SUCCESS"
+#         exit 1
+#     fi
+# else
+#     echo "MySQL is already installed."
+# fi
 
 
 #installing GIT
+# USERID=$(id -u)
+
+# if [ $USERID -ne 0 ]
+# then
+#     echo "You must have root access to execute the program..ERROR"
+# fi
+
+# dnf list installed git
+# if [ $? -ne 0 ]
+# then
+#     dnf install git -y
+#     if [ $? -ne 0 ]
+#     then
+#         echo "GIT installation...FAILURE"
+#         exit 1
+#     else
+#         echo "GIT installation...SUCCESS"
+#         exit 1
+#     fi
+# else
+#     echo "GIT is already...INSTALLED"
+# fi
+
+#Install Nginx
+
 USERID=$(id -u)
 
-if [ $USERID -ne 0 ]
+if [ $USERID -ne 0 ] #checking the root access
 then
-    echo "You must have root access to execute the program..ERROR"
+    echo "You must have root access to execute the script...ERROR"
 fi
 
-dnf list installed git
+#checking if Nginx is already present or not
+dnf list installed nginx
 if [ $? -ne 0 ]
 then
-    dnf install git -y
+    dnf install nginx -y #installing Nginx
     if [ $? -ne 0 ]
     then
-        echo "GIT installation...FAILURE"
+        echo "Nginx installation...FAILURE"
         exit 1
     else
-        echo "GIT installation...SUCCESS"
+        echo "Nginx installation...SUCCESS"
         exit 1
     fi
 else
-    echo "GIT is already...INSTALLED"
+    echo "Nginx is already...INSTALLED"
 fi
