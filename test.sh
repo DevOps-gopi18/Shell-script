@@ -86,20 +86,26 @@ echo "print the time... $TIMESTAMP"
 
 USERID=$(id -u)
 
+R="\e[31m]"
+G="\e[32m"
+Y="\e[33m"
+W="\e[0m"
+B="\e[44m"
+
 VALIDATE(){
 if [ $1 -ne 0 ]
     then
-        echo "$2 installation...FAILURE"
+        echo "$2 installation...$R FAILURE $W"
         exit 1
     else
-        echo "$2 installation...SUCCESS"
+        echo "$2 installation...$G SUCCESS $W"
         exit 1
     fi
 }
 
 if [ $USERID -ne 0 ] #checking the root access
 then
-    echo "You must have root access to execute the script...ERROR"
+    echo "$Y You must have root access to execute the script...$R ERROR $W"
 fi
 
 #checking if Nginx is already present or not
@@ -109,5 +115,5 @@ then
     dnf install nginx -y #installing Nginx
     VALIDATE $? "installing nginx"
 else
-    echo "Nginx is already...INSTALLED"
+    echo "$Y Nginx is already...INSTALLED $W"
 fi
