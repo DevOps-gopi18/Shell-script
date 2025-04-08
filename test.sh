@@ -68,10 +68,10 @@ W="\e[0m"
 B="\e[44m"
 
 #log
-LOG_FOLDER="/var/log/shell-log"
-FILE_NAME=$( echo $0 | cut -d "." -f1 )
-TIMESTAMP=$( date +%Y-%m-%D-%H-%M-%S )
-LOG_FILE_NAME="$LOG_FOLDER/$FILE_NAME-$TIMESTAMP.log"
+# LOG_FOLDER="/var/log/shell-log"
+# FILE_NAME=$( echo $0 | cut -d "." -f1 )
+# TIMESTAMP=$( date +%Y-%m-%D-%H-%M-%S )
+# LOG_FILE_NAME="$LOG_FOLDER/$FILE_NAME-$TIMESTAMP.log"
 
 VALIDATE(){
     if [ $1 -ne 0 ]
@@ -83,8 +83,6 @@ VALIDATE(){
     fi
 }
 
-echo "script execution started at...$TIMESTAMP" &>>$LOG_FILE_NAME
-
 if [ $USERID -ne 0 ]
 then
     echo "You must have root access to execute the program..ERROR"
@@ -92,10 +90,10 @@ fi
 
 for package in $@
 do
-    dnf list installed $package &>>$LOG_FILE_NAME
+    dnf list installed $package 
     if [ $? -ne 0 ]
     then
-        dnf install $package -y &>>$LOG_FILE_NAME
+        dnf install $package -y 
         VALIDATE $? "installing $package"
     else
         echo -e "$Y $package is already...INSTALLED $W"
