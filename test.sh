@@ -68,7 +68,7 @@ W="\e[0m"
 B="\e[44m"
 
 #log
-LOG_FOLDER="/var/log/shell-script"
+LOG_FOLDER="/var/log/shell-log"
 FILE_NAME=$( echo $0 | cut -d "." -f1 )
 TIMESTAMP=$( date +%Y-%m-%D-%H-%M-%S )
 LOG_FILE_NAME="$LOG_FOLDER/$FILE_NAME-$TIMESTAMP.log"
